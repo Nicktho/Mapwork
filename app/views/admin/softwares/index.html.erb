@@ -1,38 +1,40 @@
-<div class="row">
-	<ol class="breadcrumb">
- <li><%= link_to "Admin", admin_controllers_path %></li>
-  <li class="active">Software</li>
-	</ol>
-</div>
-<div class="row">
-	<h1>Admin Panel <small>Software</small></h1>
-</div>
-<div class="row">
-	<%= link_to "New Software", new_admin_software_path, class: 'btn btn-success pull-right' %>
-</div>
-<div class="row">
-	<ul class="nav nav-tabs">
-	<li><%= link_to "Controllers", admin_controllers_path %></li>
-  <li class="active" role="presentation"><%= link_to "Software", admin_softwares_path %></li>
-	</ul>
-</div>
-<div class="row">
-	<table class="table">
-		<tr>
-			<th>ID</th>
-			<th>Name</th>
-			<th>Options</th>
-		</tr>
-		<% @softwares.each do |s| %>
+<div class="container">
+	<div class="row">
+		<ol class="breadcrumb">
+	 <li><%= link_to "Admin", admin_controllers_path %></li>
+	  <li class="active">Software</li>
+		</ol>
+	</div>
+	<div class="row">
+		<h1>Admin Panel <small>Software</small></h1>
+	</div>
+	<div class="row">
+		<%= link_to "New Software", new_admin_software_path, class: 'btn btn-success pull-right' %>
+	</div>
+	<div class="row">
+		<ul class="nav nav-tabs">
+		<li><%= link_to "Controllers", admin_controllers_path %></li>
+	  <li class="active" role="presentation"><%= link_to "Software", admin_softwares_path %></li>
+		</ul>
+	</div>
+	<div class="row">
+		<table class="table">
 			<tr>
-				<td><%= s.id %></td>
-				<td><%= s.name %></td>
-				<td><div class="btn-group" role="group">
-						<%= link_to 'Edit', edit_admin_software_path(s), class: 'btn btn-warning'%>
-						<%= link_to 'Delete', 
-						admin_software_path(s), class: 'btn btn-danger', method: 'DELETE' %>
-				</div></td>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Options</th>
 			</tr>
-		<% end %>
-	</table>
+			<% @softwares.each do |s| %>
+				<tr>
+					<td><%= s.id %></td>
+					<td><%= s.name %></td>
+					<td><div class="btn-group" role="group">
+							<%= link_to 'Edit', edit_admin_software_path(s), class: 'btn btn-warning'%>
+							<%= link_to 'Delete', 
+							admin_software_path(s), class: 'btn btn-danger', method: 'DELETE' %>
+					</div></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
 </div>

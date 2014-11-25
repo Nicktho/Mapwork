@@ -1,14 +1,15 @@
-
-<div class="row">
-	<ol class="breadcrumb">
-	  <li><a href="#">Admin</a></li>
-	  <li><%= link_to "Controllers", admin_controllers_path %></li>
-	  <li class="active">Edit</li>
-	</ol>
-</div>
-<div class="row">
-	<h1>Admin Panel <small>Edit Controller</small></h1>
-</div>
-<div class="row">
-	<%= render partial: 'form' %>
+<div class="container">
+	<div class="row">
+		<ol class="breadcrumb">
+		  <li><a href="#">Admin</a></li>
+		  <li><%= link_to "Controllers", admin_controllers_path %></li>
+		  <li class="active">Edit</li>
+		</ol>
+	</div>
+	<div class="row">
+		<h1>Admin Panel <small>Edit Controller</small></h1>
+	</div>
+	<div class="row">
+		<%= render partial: 'form' %>
+	</div>
 </div>

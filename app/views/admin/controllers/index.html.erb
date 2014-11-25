@@ -1,41 +1,42 @@
-
-<div class="row">
-	<ol class="breadcrumb">
-  <li><%= link_to "Admin", admin_controllers_path %></li>
-  <li class="active">Controllers</li>
-	</ol>
-</div>
-<div class="row">
-	<h1>Admin Panel <small>Controllers</small></h1>
-</div>
-<div class="row">
-	<%= link_to "New Controller", new_admin_controller_path, class: 'btn btn-success pull-right' %>
-</div>
-<div class="row">
-	<ul class="nav nav-tabs">
-	<li class="active"><%= link_to "Controllers", admin_controllers_path %></li>
-  <li role="presentation"><%= link_to "Software", admin_softwares_path %></li>
-	</ul>
-</div>
-<div class="row">
-	<table class="table">
-		<tr>
-			<th>ID</th>
-			<th>Avatar</th>
-			<th>Name</th>
-			<th>Options</th>
-		</tr>
-		<% @controllers.each do |c| %>
+<div class="container">
+	<div class="row">
+		<ol class="breadcrumb">
+	  <li><%= link_to "Admin", admin_controllers_path %></li>
+	  <li class="active">Controllers</li>
+		</ol>
+	</div>
+	<div class="row">
+		<h1>Admin Panel <small>Controllers</small></h1>
+	</div>
+	<div class="row">
+		<%= link_to "New Controller", new_admin_controller_path, class: 'btn btn-success pull-right' %>
+	</div>
+	<div class="row">
+		<ul class="nav nav-tabs">
+		<li class="active"><%= link_to "Controllers", admin_controllers_path %></li>
+	  <li role="presentation"><%= link_to "Software", admin_softwares_path %></li>
+		</ul>
+	</div>
+	<div class="row">
+		<table class="table">
 			<tr>
-				<td><%= c.id %></td>
-				<td><%= image_tag c.avatar.url(:thumb) %></td>
-				<td><%= c.name %></td>
-				<td><div class="btn-group" role="group">
-						<%= link_to 'Edit', edit_admin_controller_path(c), class: 'btn btn-warning'%>
-						<%= link_to 'Delete', 
-						admin_controller_path(c), class: 'btn btn-danger', method: 'DELETE' %>
-				</div></td>
+				<th>ID</th>
+				<th>Avatar</th>
+				<th>Name</th>
+				<th>Options</th>
 			</tr>
-		<% end %>
-	</table>
+			<% @controllers.each do |c| %>
+				<tr>
+					<td><%= c.id %></td>
+					<td><%= image_tag c.avatar.url(:thumb) %></td>
+					<td><%= c.name %></td>
+					<td><div class="btn-group" role="group">
+							<%= link_to 'Edit', edit_admin_controller_path(c), class: 'btn btn-warning'%>
+							<%= link_to 'Delete', 
+							admin_controller_path(c), class: 'btn btn-danger', method: 'DELETE' %>
+					</div></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
 </div>
