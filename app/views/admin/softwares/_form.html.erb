@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="col-md-8">
+			<%= form_for [:admin, @software], as: :software do |f| %>
+		<div class="form-group">
+			<%= f.label :name %>
+			<%= f.text_field :name, required: true, class: 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= f.button class: 'form-control btn btn-success' %>
+		</div>
+		<% end %>
+	</div>
+	<div class="col-md-4">
+		<div class="panel panel-success">
+  		<div class="panel-heading">Software</div>
+  		<div class="panel-body">
+  			<p>Aspects of a Software</p>
+  			<ul>
+  				<li><strong>Name</strong> - The name of the software *</li>
+  			</ul>
+  			<p><small><em>* required field</em></small></p>
+  		</div>
+		</div>
+	</div>
+</div>

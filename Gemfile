@@ -29,6 +29,7 @@ gem 'paperclip'
 gem 'bcrypt'
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'autoprefixer-rails'
+gem 'redcarpet'
 
 group :development do
   gem 'pry-rails'

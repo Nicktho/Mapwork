@@ -1,0 +1,26 @@
+<div class="row map-header-row">
+	<div class="col-md-8">
+		<div class="page-header">
+			<h1><%= @mapping.name %></h1>
+		</div>
+	</div>
+	<div class="col-md-4 vote-box">
+			<% if logged_in? %>
+				<%= link_to "Downvote", mapping_downvote_path(@mapping), class: 'btn btn-danger pull-right' %>
+				<%= link_to "Upvote", mapping_upvote_path(@mapping), class: 'btn btn-success pull-right up-vote' %>
+			<% end %>
+	</div>
+</div>		
+<div class="row">
+
+	<div class="col-md-8">
+		<%= render 'shared/video', :url => @mapping.url, :title => @mapping.name %>
+		<%= render 'mappings/description', :mapping => @mapping %>
+		<%= render 'mappings/images', :mapping => @mapping %>
+	</div>
+	<div class="col-md-4">
+		<%= render 'users/info', :user => @mapping.user, :total_mappings => @mapping.user.mappings.count %>
+		<%= render 'mappings/info', :mapping => @mapping %>
+
+	</div>
+</div>

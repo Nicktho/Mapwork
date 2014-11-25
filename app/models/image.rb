@@ -12,4 +12,6 @@
 
 class Image < ActiveRecord::Base
 	belongs_to :mapping
+
+	validates :url, presence: true
 end

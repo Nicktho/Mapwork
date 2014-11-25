@@ -1,56 +1,81 @@
+# == Route Map
+#
+#                Prefix Verb   URI Pattern                                       Controller#Action
+#                  root GET    /                                                 pages#index
+#                 login GET    /login(.:format)                                  session#new
+#                       POST   /login(.:format)                                  session#create
+#                logout GET    /logout(.:format)                                 session#destroy
+#                signup GET    /signup(.:format)                                 users#new
+#         user_mappings GET    /users/:user_id/mappings(.:format)                mappings#index
+#                       POST   /users/:user_id/mappings(.:format)                mappings#create
+#      new_user_mapping GET    /users/:user_id/mappings/new(.:format)            mappings#new
+#     edit_user_mapping GET    /users/:user_id/mappings/:id/edit(.:format)       mappings#edit
+#          user_mapping GET    /users/:user_id/mappings/:id(.:format)            mappings#show
+#                       PATCH  /users/:user_id/mappings/:id(.:format)            mappings#update
+#                       PUT    /users/:user_id/mappings/:id(.:format)            mappings#update
+#                       DELETE /users/:user_id/mappings/:id(.:format)            mappings#destroy
+#                 users POST   /users(.:format)                                  users#create
+#              new_user GET    /users/new(.:format)                              users#new
+#             edit_user GET    /users/:id/edit(.:format)                         users#edit
+#                  user GET    /users/:id(.:format)                              users#show
+#                       PATCH  /users/:id(.:format)                              users#update
+#                       PUT    /users/:id(.:format)                              users#update
+#                       DELETE /users/:id(.:format)                              users#destroy
+#      mapping_comments GET    /mappings/:mapping_id/comments(.:format)          comments#index
+#                       POST   /mappings/:mapping_id/comments(.:format)          comments#create
+#   new_mapping_comment GET    /mappings/:mapping_id/comments/new(.:format)      comments#new
+#  edit_mapping_comment GET    /mappings/:mapping_id/comments/:id/edit(.:format) comments#edit
+#       mapping_comment GET    /mappings/:mapping_id/comments/:id(.:format)      comments#show
+#                       PATCH  /mappings/:mapping_id/comments/:id(.:format)      comments#update
+#                       PUT    /mappings/:mapping_id/comments/:id(.:format)      comments#update
+#                       DELETE /mappings/:mapping_id/comments/:id(.:format)      comments#destroy
+#              mappings GET    /mappings(.:format)                               mappings#index
+#               mapping GET    /mappings/:id(.:format)                           mappings#show
+#        mapping_upvote GET    /mappings/:id/upvote(.:format)                    mappings#upvote
+#                       GET    /mappings/:id/downvote(.:format)                  mappings#downvote
+#     admin_controllers GET    /admin/controllers(.:format)                      admin/controllers#index
+#                       POST   /admin/controllers(.:format)                      admin/controllers#create
+#  new_admin_controller GET    /admin/controllers/new(.:format)                  admin/controllers#new
+# edit_admin_controller GET    /admin/controllers/:id/edit(.:format)             admin/controllers#edit
+#      admin_controller GET    /admin/controllers/:id(.:format)                  admin/controllers#show
+#                       PATCH  /admin/controllers/:id(.:format)                  admin/controllers#update
+#                       PUT    /admin/controllers/:id(.:format)                  admin/controllers#update
+#                       DELETE /admin/controllers/:id(.:format)                  admin/controllers#destroy
+#       admin_softwares GET    /admin/softwares(.:format)                        admin/softwares#index
+#                       POST   /admin/softwares(.:format)                        admin/softwares#create
+#    new_admin_software GET    /admin/softwares/new(.:format)                    admin/softwares#new
+#   edit_admin_software GET    /admin/softwares/:id/edit(.:format)               admin/softwares#edit
+#        admin_software GET    /admin/softwares/:id(.:format)                    admin/softwares#show
+#                       PATCH  /admin/softwares/:id(.:format)                    admin/softwares#update
+#                       PUT    /admin/softwares/:id(.:format)                    admin/softwares#update
+#                       DELETE /admin/softwares/:id(.:format)                    admin/softwares#destroy
+#
+
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  root to: 'pages#index'
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  get '/login', to: 'session#new'
+  post '/login', to: 'session#create'
+  get '/logout', to: 'session#destroy'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  get '/signup', to: 'users#new'
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  resources :users, except: [:index] do 
+  	resources :mappings
+  end 
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  resources :mappings, only: [:show, :index] do 
+  	resources :comments
+  end 
 
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+  get '/mappings/:id/upvote', to: 'mappings#upvote', as: 'mapping_upvote'
+  get '/mappings/:id/downvote', to: 'mappings#downvote', as: 'mapping_downvote'
+  get '/mappings/:id/download', to: 'mappings#download', as: 'mapping_download'
 
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+  namespace :admin do 
+  	resources :controllers, :softwares
+  end 
 
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  # resources :controllers, only: :show
+  # resources :softwares, only: :show
 end

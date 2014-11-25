@@ -1,0 +1,13 @@
+<div class="row">
+	<ol class="breadcrumb">
+	  <li><%= link_to "Admin", admin_controllers_path %></li>
+	  <li><%= link_to "Software", admin_softwares_path %></li>
+	  <li class="active">New</li>
+	</ol>
+</div>
+<div class="row">
+	<h1>Admin Panel <small>New Software</small></h1>
+</div>
+<div class="row">
+	<%= render partial: 'form' %>
+</div>

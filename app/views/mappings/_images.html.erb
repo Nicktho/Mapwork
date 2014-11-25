@@ -1,0 +1,11 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Images
+	</div>
+	<div class="panel-body">
+		<% @mapping.images.each do |image| %>
+			<h5><%= image.title %></h5>
+			<%= image_tag image.url %>
+		<% end %>
+	</div>
+</div>

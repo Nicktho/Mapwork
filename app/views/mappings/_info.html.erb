@@ -1,0 +1,35 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Mapping Info
+	</div>
+	<div class="panel-body">
+		<h5><%= mapping.name %></h5>
+		<table class='table'>
+			<tr>
+				<td><strong>Rating</strong></td>
+				<td><%= mapping.upvotes || 0 %> U / <%= mapping.downvotes || 0 %> D</td>
+			</tr>
+			<tr>
+				<td><strong>Last Updated</strong></td>
+				<td><%= distance_of_time_in_words_to_now mapping.updated_at %></td>
+			</tr>
+			<tr>
+				<td><strong>Software</strong></td>
+				<td><%= mapping.software.name %></td>
+			</tr>
+			<tr>
+				<td><strong>Controller</strong></td>
+				<td><%= mapping.controller.name %></td>
+			</tr>
+			<tr>
+				<td><strong>Downloads</strong></td>
+				<td><%= mapping.downloads || 0 %></td>
+			</tr>
+		</table>
+		<% if logged_in? %>
+			<%= link_to 'Download', mapping_download_path(mapping), class: 'btn btn-success btn-block' %>
+		<% else %>
+			<div class="alert alert-warning"><strong>Sorry!</strong> You must be signed in to download mappings</div>
+		<% end %>
+	</div>
+</div>

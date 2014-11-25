@@ -1,0 +1,23 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= link_to user.name, user %></h3>
+  </div>
+  <div class="panel-body">
+    <%= image_tag user.avatar.url(:thumb) %>
+    <p></p>
+		<table class="table about_user">
+			<tr>
+				<td><strong>Reputation</strong></td>
+				<td><%= user.reputation || 0 %></td>
+			</tr>
+			<tr>
+				<td><strong>Member for</strong></td>
+				<td><%= distance_of_time_in_words_to_now user.created_at %></td>
+			</tr>
+			<tr>
+				<td><strong>Mappings</strong></td>
+				<td><%= link_to total_mappings, user_mappings_path(user) %></td>
+			</tr>
+		</table>
+  </div>
+</div>

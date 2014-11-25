@@ -10,4 +10,6 @@
 
 class Software < ActiveRecord::Base
 	has_many :mappings
+
+	validates :name, presence: true
 end

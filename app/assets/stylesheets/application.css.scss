@@ -1,3 +1,20 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+// For fixed header
+// body { padding-top: 70px; }
+
+.vote-box {
+	position: absolute;
+	bottom: 30px;
+	right: 0px;
+}
+
+.up-vote {
+	margin-right: 1em;
+}
+
+.map-header-row {
+	position: relative;
+}

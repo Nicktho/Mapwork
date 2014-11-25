@@ -12,4 +12,7 @@
 
 class Comment < ActiveRecord::Base
 	belongs_to :mapping
+
+	validates :user_id, presence: true
+	validates :mapping_id, presence: true
 end
