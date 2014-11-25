@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
-  <div class="container-fluid">
+  <div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
@@ -21,6 +21,7 @@
           <% if @current_user.admin %>
             <li class="<%= 'active' if params[:controller].include? 'admin' %>"><%= link_to 'Admin Panel', admin_controllers_path %></li>
           <% end %>
+          <li><%= link_to 'New Mapping', new_mapping_path %></li>
 					<li><%= link_to 'Logout', logout_path %></li>
 				<% else %>
 					<li><%= link_to 'Sign Up', new_user_path %></li>

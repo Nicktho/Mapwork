@@ -27,7 +27,16 @@
 			</tr>
 		</table>
 		<% if logged_in? %>
-			<%= link_to 'Download', mapping_download_path(mapping), class: 'btn btn-success btn-block' %>
+			<p>
+				<%= link_to 'Download', mapping_download_path(mapping), class: 'btn btn-success btn-block' %>
+			</p>
+			<% if @current_user == mapping.user %>
+				<div class="btn-group btn-group-justified" role="group" aria-label="...">	
+									<%= link_to 'Edit', edit_mapping_path(mapping), class: 'btn btn-warning' %>
+				<%= link_to 'Delete', mapping_path(mapping), method: :delete, class: 'btn btn-danger' %>
+				</div>
+
+			<% end  %>
 		<% else %>
 			<div class="alert alert-warning"><strong>Sorry!</strong> You must be signed in to download mappings</div>
 		<% end %>

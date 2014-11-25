@@ -1,0 +1,40 @@
+<% if @mapping.errors.any? %>
+	<% @mapping.errors.full_messages.each do |msg| %>
+
+		<div class="alert alert-danger alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<%= msg %>
+		</div>
+	<% end %>
+<% end %>
+<%= form_for [@user, @mapping] do |f| %>
+	<div class="form-group">
+		<%= f.label :controller_id %>
+		<%= f.select :controller_id, options_from_collection_for_select(Controller.all, :id, :name, @mapping.controller_id), {}, class: 'form-control' %>		
+	</div>
+	<div class="form-group">
+		<%= f.label :software_id %>
+		<%= f.select :software_id, options_from_collection_for_select(Software.all, :id, :name, @mapping.software_id), {}, class: 'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= f.label :name %>
+		<%= f.text_field :name, class: 'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= f.label :description %>
+		<%= f.text_area :description, class: 'form-control', rows: 8 %>
+		<span class='help-block'>You can use markdown to style your description. <%= link_to "What's markdown?", "http://daringfireball.net/projects/markdown/" %></span>
+	</div>
+	<div class="form-group">
+		<%= f.label :video, 'Youtube video URL' %>
+		<%= f.url_field :video, class: 'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= f.label :url, 'Download URL'%>
+		<%= f.url_field :url, class: 'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= f.submit class: 'btn btn-success btn-block' %>	
+	</div>
+	
+<% end %>

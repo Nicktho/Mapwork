@@ -8,7 +8,6 @@
 #                signup GET    /signup(.:format)                                 users#new
 #         user_mappings GET    /users/:user_id/mappings(.:format)                mappings#index
 #                       POST   /users/:user_id/mappings(.:format)                mappings#create
-#      new_user_mapping GET    /users/:user_id/mappings/new(.:format)            mappings#new
 #     edit_user_mapping GET    /users/:user_id/mappings/:id/edit(.:format)       mappings#edit
 #          user_mapping GET    /users/:user_id/mappings/:id(.:format)            mappings#show
 #                       PATCH  /users/:user_id/mappings/:id(.:format)            mappings#update
@@ -30,9 +29,12 @@
 #                       PUT    /mappings/:mapping_id/comments/:id(.:format)      comments#update
 #                       DELETE /mappings/:mapping_id/comments/:id(.:format)      comments#destroy
 #              mappings GET    /mappings(.:format)                               mappings#index
+#           new_mapping GET    /mappings/new(.:format)                           mappings#new
+#          edit_mapping GET    /mappings/:id/edit(.:format)                      mappings#edit
 #               mapping GET    /mappings/:id(.:format)                           mappings#show
 #        mapping_upvote GET    /mappings/:id/upvote(.:format)                    mappings#upvote
-#                       GET    /mappings/:id/downvote(.:format)                  mappings#downvote
+#      mapping_downvote GET    /mappings/:id/downvote(.:format)                  mappings#downvote
+#      mapping_download GET    /mappings/:id/download(.:format)                  mappings#download
 #     admin_controllers GET    /admin/controllers(.:format)                      admin/controllers#index
 #                       POST   /admin/controllers(.:format)                      admin/controllers#create
 #  new_admin_controller GET    /admin/controllers/new(.:format)                  admin/controllers#new
@@ -61,10 +63,10 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
 
   resources :users, except: [:index] do 
-  	resources :mappings
+  	resources :mappings, except: [:new]
   end 
 
-  resources :mappings, only: [:show, :index] do 
+  resources :mappings, only: [:show, :index, :new, :edit, :destroy] do 
   	resources :comments
   end 
 

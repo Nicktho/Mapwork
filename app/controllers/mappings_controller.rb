@@ -25,12 +25,25 @@ class MappingsController < ApplicationController
   end
 
   def create
+    @user = User.find params[:user_id]
+    @mapping = Mapping.new mapping_params
+    @mapping.user = @user
+    if @mapping.save 
+      redirect_to mapping_path @mapping
+    else 
+
+      render :new
+    end 
   end
 
   def new
+    redirect_to root_path unless @current_user
+    @user = @current_user
+    @mapping = Mapping.new
   end
 
   def edit
+    @user = @current_user
   end
 
   def show
@@ -59,5 +72,10 @@ class MappingsController < ApplicationController
     @mapping = Mapping.find params[:id]
     @mapping.download
     redirect_to @mapping.url 
+  end 
+
+  private
+  def mapping_params
+    params.require(:mapping).permit(:controller_id, :software_id, :name, :description, :video, :url, :user_id)
   end 
 end

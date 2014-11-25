@@ -24,9 +24,11 @@ class Mapping < ActiveRecord::Base
 	has_many :comments
 	has_many :images
 
+	before_save :add_defaults
+
 	validates :controller_id, presence: true
 	validates :software_id, presence: true
-	validates :user_id, presence: true
+
 	validates :name, presence: true, length: {minimum: 3}
 	validates :description, presence: true, length: {minimum: 3}
 	validates :url, presence: true
@@ -35,11 +37,17 @@ class Mapping < ActiveRecord::Base
 		all.order(created_at: :desc)
 	}
 	scope :top_downloads, -> {
-		all.order(downloads: :asc)
+		all.order(downloads: :desc)
 	}
 	scope :highest_rated, -> {
-		all.order(upvotes: :asc)
+		all.order(upvotes: :desc)
 	}
+
+	def add_defaults
+		self.downloads = 0
+		self.upvotes = 0
+		self.downvotes = 0
+	end 
 
 	def upvote 
 		self.upvotes ||= 0
