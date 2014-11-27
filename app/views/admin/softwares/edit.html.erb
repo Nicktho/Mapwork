@@ -1,14 +1,14 @@
-<div class="container">
-	<div class="row">
+<div class="page-heading-box">
+	<div class="container">
+	  <h1>Admin Panel<small></small></h1>
 		<ol class="breadcrumb">
-		  <li><%= link_to "Admin", admin_controllers_path %></li>
-		  <li><%= link_to "Software", admin_softwares_path %></li>
-		  <li class="active">Edit</li>
+	  	<li><%= link_to "Admin", admin_controllers_path %></li>
+	  	<li><%= link_to "Software", admin_softwares_path %></li>
+	  	<li class='active'>Edit</li>
 		</ol>
 	</div>
-	<div class="row">
-		<h1>Admin Panel <small>Edit Software</small></h1>
-	</div>
+</div>
+<div class="container">
 	<div class="row">
 		<%= render partial: 'form' %>
 	</div>	

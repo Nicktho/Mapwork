@@ -13,7 +13,6 @@ class MappingsController < ApplicationController
       @mappings = @mappings.where(software_id: software)
     end 
 
-
     @mappings = case params[:sort]
       when "top" then @mappings.top_downloads
       when "recent" then @mappings.recent
@@ -44,21 +43,38 @@ class MappingsController < ApplicationController
 
   def edit
     @user = @current_user
+    @mapping = Mapping.includes(:user, :software, :controller).find(params[:id])
+    redirect_to root_path unless @mapping.user == @user 
   end
 
   def show
+
     @mapping = Mapping.includes(:user, :software, :controller, :images).find(params[:id])
   end
 
   def update
+    @mapping = Mapping.find params[:id]
+    if @mapping.update mapping_params
+      redirect_to mapping_path @mapping
+    else
+      render :edit
+   end 
   end
 
   def destroy
+    @mapping = Mapping.find params[:id]
+    if @mapping.user == @current_user
+      @mapping.destroy 
+      redirect_to user_mappings_path @current_user
+    else
+      redirect_to mapping_path @mapping
+    end
   end
 
   def upvote
     @mapping = Mapping.find params[:id]
     @mapping.upvote
+
     redirect_to mapping_path @mapping
   end 
 

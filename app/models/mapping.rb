@@ -24,7 +24,7 @@ class Mapping < ActiveRecord::Base
 	has_many :comments
 	has_many :images
 
-	before_save :add_defaults
+	before_create :add_defaults
 
 	validates :controller_id, presence: true
 	validates :software_id, presence: true

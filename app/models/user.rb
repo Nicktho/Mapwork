@@ -43,4 +43,12 @@ class User < ActiveRecord::Base
 		user.reputation -= 1
 		user.save
 	end 
+
+	def total_downloads
+		total = 0
+		self.mappings.each do |map| 
+			total += map.downloads || 0
+		end 
+		total
+	end 
 end

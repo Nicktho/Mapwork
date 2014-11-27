@@ -1,2 +1,29 @@
-<h1>Mappings#edit</h1>
-<p>Find me in app/views/mappings/edit.html.erb</p>
+<div class="page-heading-box">
+	<div class="container">
+	  <h1>Mappings <small>/ Edit Mapping</small></h1>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<%= render 'form' %>
+		</div>
+		<div class="col-md-4">
+			<div class="panel panel-primary">
+	  		<div class="panel-heading">Mappings</div>
+	  		<div class="panel-body">
+	  			<p>Mapping Form Glossary</p>
+	  			<ul>
+	  				<li><strong>Controller</strong> - Which controller your mapping is created for.</li>
+	  				<li><strong>Software</strong> - Which software your mapping is created for.</li>
+	  				<li><strong>Name</strong> - The name of your mapping.</li>
+	  				<li><strong>Description</strong> - A description of your mapping, you can use markdown to style this, <%= link_to 'find out more about markdown', 'http://daringfireball.net/projects/markdown/' %>.</li>
+	  				<li><strong>Youtube Video Url</strong> - A URL to a video about your mapping.</li>
+	  				<li><strong>Download URL</strong> - The URL to download your mapping.</li>
+	  			</ul>
+
+	  		</div>
+			</div>
+		</div>
+	</div>
+</div>

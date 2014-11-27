@@ -34,4 +34,13 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => 'mapworkapp',
+    :access_key_id => 'AKIAIG6KULM5FNANHXDQ',
+    :secret_access_key => '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'
+  }
+}
 end

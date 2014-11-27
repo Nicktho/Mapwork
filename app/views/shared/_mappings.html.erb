@@ -1,5 +1,4 @@
 <div class='row'>
-
 	<form action="/mappings" class="form-inline">
 		<div class="form-group">
 			<%= select_tag :controller_id, options_from_collection_for_select(Controller.all, :id, :name, params[:controller_id]), class: 'form-control', prompt: 'All' %>
@@ -10,23 +9,28 @@
 
 </div>
 <div class="row">
+
+		
+
 	<ul class="nav nav-tabs">	
   	<li role="presentation" class="<%= 'active' if params[:sort] == 'all' %>"><%= link_to "All", params.merge({sort: 'all'}) %></li>
   	<li role="presentation" class="<%= 'active' if params[:sort] == 'top' %>"><%= link_to "Top Downloads", params.merge({:sort => 'top'}) %></li>
   	<li role="presentation" class="<%= 'active' if params[:sort] == 'recent' %>"><%= link_to "Recent", params.merge({:sort => 'recent'}) %></li>
   	<li class="<%= 'active' if params[:sort] == 'rated' %>"><%= link_to "Highest Rated", params.merge({:sort => 'rated'}) %></li>
 	</ul>
+	<div class="text-center">
 	<table class="table table-hover table-striped">
 		<% @mappings.each do |mapping| %>
 			<tr class="map-row" href="<%= mapping_path(mapping) %>">
 				<td><%= image_tag mapping.controller.avatar.url(:thumb) %></td>
 				<td><%= mapping.software.name %></td>
-				<td class="map-name"><%= link_to mapping.name, mapping %></td>
-				<td>by <%= link_to mapping.user.name, mapping.user %></td>
+				<td class="map-name"><h4><%= link_to mapping.name, mapping %></h4></td>
+				<td>by <em><%= link_to mapping.user.name, mapping.user %></em></td>
 				<td><%= mapping.upvotes || 0 %> <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>, <%= mapping.downvotes || 0 %> <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></td>
 				<td><%= mapping.downloads || 0 %> downloads</td>
 			</tr>
 		<% end  %>
 	</table>
+		</div>
 </div>
 

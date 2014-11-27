@@ -79,4 +79,13 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => 'mapworkapp',
+    :access_key_id => 'AKIAIG6KULM5FNANHXDQ',
+    :secret_access_key => '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'
+  }
+}
 end

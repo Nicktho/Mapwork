@@ -1,13 +1,85 @@
-
+$mapwork-color: #86C543; 
 $jumbotron-bg: rgba(0,0,0,0);
+$jumbotron-color: white;
+$brand-primary: darken(#86C543, 6.5%);
+$navbar-default-bg: white;
+$navbar-default-border: white;
+$navbar-default-link-active-bg: #f9f9f9;
+$nav-link-hover-bg: #f9f9f9;
+$navbar-default-color: darken($brand-primary, 6.5%);
+$navbar-default-link-color: darken($brand-primary, 6.5%);
+$navbar-default-link-hover-color: darken($navbar-default-link-color, 6.5%);
+$navbar-default-link-active-color: darken($navbar-default-link-color, 6.5%);
+$headings-small-color: white;
+
+$breadcrumb-bg: white;
 
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-// For fixed header
-// body { padding-top: 70px; }
 
+
+// For fixed header
+body { padding-top: 50px; }
+.navbar {border: none;}
+
+// fix for search tables
+.table > tbody > tr > td {
+	vertical-align: middle;
+}
+.front-button {
+	background: none;
+	border: 3px solid white;
+}
+
+.front-button:hover {
+	background: white;
+	color: $mapwork-color;
+	border: 3px solid white;
+}
+.navbar-static-top {
+	margin-bottom: 0;
+}
+.page-heading-box {
+	background: $mapwork-color;
+	margin-bottom: 40px;
+	color: white;
+	padding: 50px 20px;
+	h1 {
+		font-size: 3em;
+	}
+}
+
+.front-header {
+	background: $mapwork-color;
+	background-image: image-url('apc40trans.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: top 300px right -350px;
+	margin-bottom: 80px;
+	padding: 120px 0;
+}
+.lead {
+	max-width: 80%;
+
+}
+.big {
+	font-size: 8em;
+}
+.sign-up {
+	margin-top: 2em;
+	width: 50%;
+}
+.half-rule {
+	width: 100px;
+	margin: 40px auto;
+}
+
+.lead-title {
+	font-size: 40px;
+}
 .nav-tabs {
 	margin: 1em 0;
 }
@@ -22,6 +94,16 @@ $jumbotron-bg: rgba(0,0,0,0);
 	margin-right: 1em;
 }
 
+.front-controllers-box {
+	height: 400px;
+	background: $mapwork-color;
+	background-image: url("http://macprovid.vo.llnwd.net/o43/hub/media/1117/7974/05_push_rear_view_transparent.png");
+	background-position: top -100%;
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: top -300px right -10px;
+	background-repeat: no-repeat;
+}
 .map-header-row {
 	position: relative;
 }

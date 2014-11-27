@@ -1,18 +1,17 @@
-<div class="container">
-	<div class="row">
+<div class="page-heading-box">
+	<div class="container">
+		
+	  <h1>Admin Panel<small></small></h1>
 		<ol class="breadcrumb">
-	 <li><%= link_to "Admin", admin_controllers_path %></li>
-	  <li class="active">Software</li>
+	  	<li><%= link_to "Admin", admin_controllers_path %></li>
+	  	<li class="active">Software</li>
 		</ol>
 	</div>
-	<div class="row">
-		<h1>Admin Panel <small>Software</small></h1>
-	</div>
-	<div class="row">
-		<%= link_to "New Software", new_admin_software_path, class: 'btn btn-success pull-right' %>
-	</div>
+</div>
+<div class="container">
 	<div class="row">
 		<ul class="nav nav-tabs">
+		<%= link_to "New Software", new_admin_software_path, class: 'btn btn-primary pull-right' %>
 		<li><%= link_to "Controllers", admin_controllers_path %></li>
 	  <li class="active" role="presentation"><%= link_to "Software", admin_softwares_path %></li>
 		</ul>

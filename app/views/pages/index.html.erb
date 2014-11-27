@@ -1,9 +1,54 @@
-
-<div class="jumbotron">
-  <h1>Mapwork</h1>
-  <p>Share and download controller mappings for your favourite software</p>
-	<p>
-		<%= link_to "Search Mappings", mappings_path, class: "btn btn-primary btn-lg" %>
-  </p>
+<div class="front-header">
+	<div class="container">
+		<div class="jumbotron">
+		  <h1>Mapwork</h1>
+		  <p>Share and download controller mappings for your favourite software</p>
+			<p>
+				<%= link_to "Search Mappings", mappings_path, class: "btn btn-primary btn-lg front-button" %>
+		  </p>
+		</div>
+	</div>
 </div>
+<div class="container">
+	<div class="row text-center">
+		<h1 class="lead-title">Discover Mappings</h1>
+		<p class="lead center-block">Mapwork is a community of like-minded mappers, who create and share quality mappings for a wide range of controllers and software.
+		<hr class="half-rule"></p>
+	</div>
+	<div class="row text-center features-row">
+		<div class="col-md-4 lead text-center center-block">
+			<span class="glyphicon glyphicon-search big text-primary"></span>
+			<p><h3>Search</h3>
+				Search through hundreds of mappings for a wide range of controllers and software.
+			</p>
+		</div><div class="col-md-4 lead text-center center-block">
+			<span class="glyphicon glyphicon-thumbs-up big text-primary"></span>
+			<p><h3>Rate</h3>
+				Vote for your favourites with our rating system. At a glance find out which mapping is the best for you.
+			</p>
+		</div><div class="col-md-4 lead text-center center-block">
+			<span class="glyphicon glyphicon-user big text-primary"></span>
+			<p><h3>Network</h3>
+				Mapwork is a network of creatives, register your profile, track your reputation and become involved with the mapping community.
+			</p>
+		</div>
+		<hr class="half-rule">
+	</div>
+</div>
+<div class="front-controllers-box">
+</div>
+<div class="container">
+			<hr class="half-rule">
+	<div class="row text-center">
+		<h3>What are you waiting for?</h3>
+		<p>
+			<%= link_to "Sign Up Now", new_user_path, class: "btn btn-primary btn-lg sign-up" %>
+		</p>
 
+	</div>
+	<div class="row text-center">
+			<hr class="half-rule">
+		<small>Created by Nicholas Matenaar for General Assembly Sydney WDI6 </small>
+		<hr class="half-rule">
+	</div>
+</div>

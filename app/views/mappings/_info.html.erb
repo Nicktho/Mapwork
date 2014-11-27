@@ -28,17 +28,19 @@
 		</table>
 		<% if logged_in? %>
 			<p>
-				<%= link_to 'Download', mapping_download_path(mapping), class: 'btn btn-success btn-block' %>
+				<%= link_to 'Download', mapping_download_path(mapping), class: 'btn btn-primary btn-block' %>
 			</p>
-			<% if @current_user == mapping.user %>
-				<div class="btn-group btn-group-justified" role="group" aria-label="...">	
-									<%= link_to 'Edit', edit_mapping_path(mapping), class: 'btn btn-warning' %>
-				<%= link_to 'Delete', mapping_path(mapping), method: :delete, class: 'btn btn-danger' %>
-				</div>
-
-			<% end  %>
+			<div class="btn-group btn-group-justified" role="group" aria-label="...">	
+				<% if @current_user == mapping.user %>
+					<%= link_to 'Edit', edit_mapping_path(mapping), class: 'btn btn-warning' %>
+					<%= link_to 'Delete', mapping_path(mapping), method: :delete, class: 'btn btn-danger' %>
+				<% else %>
+					<%= link_to "Upvote", mapping_upvote_path(@mapping), class: 'btn btn-primary' %>
+					<%= link_to "Downvote", mapping_downvote_path(@mapping), class: 'btn btn-danger' %>
+				<% end %>
+			</div>
 		<% else %>
-			<div class="alert alert-warning"><strong>Sorry!</strong> You must be signed in to download mappings</div>
+			<div class="alert alert-warning"><strong>Sorry!</strong> You must be signed in to download mappings and vote</div>
 		<% end %>
 	</div>
 </div>

@@ -1,2 +1,83 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="page-heading-box">
+	<div class="container">
+	  <h1>Profiles <small>/ <%= @user.name.capitalize %></small></h1>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<% if @current_user.id == @user.id %>
+				<p><%= link_to 'Edit Profile', edit_user_path(@current_user), class: 'btn btn-warning btn-block' %></p>
+			<% end %>	
+			<div class="panel panel-default">
+			  <div class="panel-body text-center">
+			    <p><%= image_tag @user.avatar.url(:medium) %></p>
+			  </div>
+			  <ul class="list-group text-right">
+			    <li class="list-group-item">Joined on <%= @user.created_at.strftime("%d/%m/%Y") %>.</li>
+			  </ul>
+			</div>		
+		</div>
+		<div class="col-md-8">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="panel panel-primary">
+						<div class="panel-heading text-center">
+							Mappings Downloaded
+						</div>
+						<div class="panel-body text-center">
+							<p><h1 class="text-primary"><strong><%= @total_downloads %></strong></h1></p>
+							<p><h3 class="text-muted">Times</h3></p>
+						</div>
+					</div>
+				</div><div class="col-md-4">
+					<div class="panel panel-primary">
+						<div class="panel-heading text-center">
+							Total Reputation
+						</div>
+						<div class="panel-body text-center">
+							<p><h1 class="text-primary"><strong><%= @user.reputation %></strong></h1></p>
+							<p><h3 class="text-muted">Reputation</h3></p>
+						</div>
+					</div>
+				</div><div class="col-md-4">
+					<div class="panel panel-primary">
+						<div class="panel-heading text-center">
+							Total Mappings
+						</div>
+						<div class="panel-body text-center">
+							<p><h1 class="text-primary"><strong><%= @user.mappings.count %></strong></h1></p>
+							<p><h3 class="text-muted">Mappings</h3></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default">
+					  <!-- Default panel contents -->
+					  <div class="panel-heading"><h3 class="panel-title"><%= @user.name.capitalize %>'s Mappings<%= link_to "View In Search", user_mappings_path(@user), class: 'pull-right' %></h3>
+
+					  </div>
+					  <!-- List group -->
+					  <div class="list-group">
+							<% @user.mappings.each do |mapping| %>
+								<a href="<%= mapping_path(mapping) %>" class="list-group-item">
+									<div class="media">
+									  <div class="media-left">
+											<%= image_tag mapping.controller.avatar.url(:thumb) %>
+									  </div>
+									  <div class="media-body">
+									    <h4 class="media-heading"><%= mapping.name %></h4>
+									   	<%= pluralize(mapping.downloads, 'download')%>
+									  </div>
+									</div>
+								</a>
+							<% end %>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
