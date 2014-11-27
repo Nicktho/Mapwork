@@ -1,8 +1,8 @@
-== Mapworks
+= Mapworks
 
 A network to share, download and find community made mappings for midi controllers. 
 
-= Install 
+== Install 
 
 After downloading, run
 
@@ -15,4 +15,15 @@ Create your database
 Create an account, then in console
 
 <tt>User.find(1).update(admin: true)</tt>
+
+== Features
+
+* Share mappings
+* Reputation System
+* Track downloads on mappings
+* Search through RESTful URLs or query-based searching
+* Bootstrapped 
+* Admin Dashboard
+* Mapping upvote/downvote 
+* Markdown to create mapping descriptions
 
