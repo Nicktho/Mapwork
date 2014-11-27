@@ -1,28 +1,18 @@
-== README
+== Mapworks
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A network to share, download and find community made mappings for midi controllers. 
 
-Things you may want to cover:
+= Install 
 
-* Ruby version
+After downloading, run
 
-* System dependencies
+<tt>bundle install</tt>
 
-* Configuration
+Create your database
 
-* Database creation
+<tt>rake db:migrate</tt>
 
-* Database initialization
+Create an account, then in console
 
-* How to run the test suite
+<tt>User.find(1).update(admin: true)</tt>
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
